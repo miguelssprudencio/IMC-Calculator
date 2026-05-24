@@ -27,6 +27,37 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  background: linear-gradient(
+    -45deg,
+    #00eff8,
+    #f800b4,
+    #ebf503,
+    #02f6c1,
+    #00eff8,
+    #9400f8
+  );
+ 
+  background-size: 400% 400%;
+  animation: gradient 30s ease infinite;
+  height: 200%;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 100%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .card {
@@ -153,7 +184,7 @@ button:hover span:not(:nth-child(6)) {
     align-items: center;
     z-index: 1000;  
   box-sizing: border-box;
-  background: rgba(110, 110, 110, 0.58);
+  background: transparent;
   border: 1px solid white;
   box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(6px);
@@ -166,7 +197,7 @@ button:hover span:not(:nth-child(6)) {
 }
 
 .modal:hover {
-  border: 1px solid black;
+  border: 1px solid #ffa1d8;
   transform: scale(1.05);
 }
 
@@ -229,9 +260,9 @@ button:hover span:not(:nth-child(6)) {
   padding: 10px 24px;
   font-size: 25px;
   color: rgb(255, 85, 164);
-  border: 2px solid white;
+  border: 2px solid #e8e8e8;
   border-radius: 34px;
-  background-color: white;
+  background-color: #e8e8e8;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
   overflow: hidden;
@@ -259,6 +290,7 @@ button:hover span:not(:nth-child(6)) {
   color: #ffffff;
   scale: 1.1;
   box-shadow: 0 0px 20px rgba(255, 85, 170, 0.4);
+  border: rgb(255, 72, 157);
 }
 
 #calcular:active {
@@ -272,9 +304,9 @@ button:hover span:not(:nth-child(6)) {
   padding: 10px 24px;
   font-size: 25px;
   color: rgb(255, 85, 164);
-  border: 2px solid white;
+  border: 2px solid #e8e8e8;
   border-radius: 34px;
-  background-color: white;
+  background-color: #e8e8e8;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
   overflow: hidden;
@@ -302,6 +334,7 @@ button:hover span:not(:nth-child(6)) {
   color: #ffffff;
   scale: 1.1;
   box-shadow: 0 0px 20px rgba(255, 85, 170, 0.4);
+  border: rgb(255, 72, 157);
 }
 
 #fechar:active {
@@ -313,7 +346,7 @@ button:hover span:not(:nth-child(6)) {
   font-weight: 500;
   font-size: 20px;
   color: #000000;
-  background-color: rgba(255, 255, 255, 0.596);
+  background-color: rgba(255, 255, 255, 0);
   box-shadow: 0 0 .4vw rgba(255, 85, 170, 0.4), 0 0 0 .15vw transparent;
   border-radius: 20px;
   border: none;
@@ -337,7 +370,7 @@ button:hover span:not(:nth-child(6)) {
   font-weight: 500;
   font-size: 20px;
   color: #000000;
-  background-color: rgba(255, 255, 255, 0.596);
+  background-color: rgba(255, 255, 255, 0);
   box-shadow: 0 0 .4vw rgba(255, 85, 170, 0.4), 0 0 0 .15vw transparent;
   border-radius: 20px;
   border: none;
@@ -361,7 +394,7 @@ button:hover span:not(:nth-child(6)) {
   font-weight: 500;
   font-size: 20px;
   color: #000000;
-  background-color: rgba(255, 255, 255, 0.596);
+  background-color: rgba(255, 255, 255, 0);
   box-shadow: 0 0 .4vw rgba(255, 85, 170, 0.4), 0 0 0 .15vw transparent;
   border-radius: 20px;
   border: none;
@@ -397,4 +430,117 @@ button:hover span:not(:nth-child(6)) {
     font-size: 30px;
     text-align: center;
     margin-bottom: 50px;
+}
+
+.modal-resultado {
+     width: 100%;
+    max-width: 450px;
+    min-height: 550px;
+    background: #e8e8e8;
+    border-radius: 50px;
+    box-shadow: rgba(223, 30, 159, 0.452) 0px -23px 25px 0px inset, rgba(223, 30, 159, 0.452) 0px -36px 30px 0px inset, rgba(223, 30, 159, 0.452) 0px -79px 40px 0px inset, rgba(223, 30, 159, 0.452) 0px 2px 1px, rgba(223, 30, 159, 0.452) 0px 4px 2px, rgba(223, 30, 159, 0.452) 0px 8px 4px, rgba(223, 30, 159, 0.452) 0px 16px 8px, rgba(223, 30, 159, 0.452) 0px 32px 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 20px;
+    box-sizing: border-box; 
+    animation: flutuacao 3.1s ease-in-out infinite;
+}
+
+.modal-resultado h2 {
+    width: 280px;
+    height: 105px;
+    background: rgb(255, 61, 213);
+    border-radius: 50px;
+    box-shadow: rgba(223, 30, 159, 0.452) 0px -23px 25px 0px inset, rgba(223, 30, 159, 0.452) 0px -36px 30px 0px inset, rgba(223, 30, 159, 0.452) 0px -79px 40px 0px inset, rgba(223, 30, 159, 0.452) 0px 2px 1px, rgba(223, 30, 159, 0.452) 0px 4px 2px, rgba(223, 30, 159, 0.452) 0px 8px 4px, rgba(223, 30, 159, 0.452) 0px 16px 8px, rgba(223, 30, 159, 0.363) 0px 32px 16px;
+    animation: flutuacao 3.1s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.699);
+    text-shadow: 0 0 10px rgb(255, 198, 255);
+    font-family: 'Josefin Sans';
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.resultado-box {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.452);
+    border-radius: 20px;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 40px;
+}
+
+.imc-numero {
+    font-size: 60px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 65, 182, 0.9);
+    font-family: 'Bebas Neue';
+    letter-spacing: 2px;
+}
+
+.imc-categoria {
+    font-size: 30px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 200, 255, 0.8);
+    font-family: 'Josefin Sans';
+    font-weight: 600;
+    text-align: center;
+}
+
+.btn-novo {
+    width: 300px;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 24px;
+  font-size: 25px;
+  color: rgb(255, 85, 164);
+  border: 2px solid #e8e8e8;
+  border-radius: 40px;
+  background-color: #e8e8e8;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+
+.btn-novo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: rgb(255, 65, 182);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.btn-novo:hover::before {
+  scale: 8.5;
+}
+
+.btn-novo:hover {
+  color: #ffffff;
+  scale: 1.1;
+  box-shadow: 0 0px 20px rgba(255, 85, 170, 0.4);
+}
+
+.btn-novo:active {
+  scale: 1;
 }

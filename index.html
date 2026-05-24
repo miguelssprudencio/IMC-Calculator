@@ -22,6 +22,7 @@
     <span class="start">START</span>
         </button>
     </div>
+    
     <div class="como">
             <h2>Como funciona?</h2>
         <ul>1. Perguntaremos seu peso em kg</ul>
@@ -38,6 +39,16 @@
 
             <button id="calcular">Calcular</button>
              <button id="fechar">Cancelar</button>
+        </div>
+    </div>
+    <div id="modalResultado" class="modal hidden">
+        <div class="modal-resultado">
+            <h2 id="nomeResultado"></h2>
+            <div class="resultado-box">
+                <div class="imc-numero" id="imcNumero"></div>
+                <div class="imc-categoria" id="imcCategoria"></div>
+            </div>
+            <button id="novoCalculo" class="btn-novo">Novo Cálculo</button>
         </div>
     </div>
         <script src="script.js"></script>

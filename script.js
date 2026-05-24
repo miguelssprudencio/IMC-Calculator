@@ -1,11 +1,16 @@
 // 1. PEGAR OS ELEMENTOS (conectar JS com HTML)
 const modal = document.getElementById('modal');
+const modalResultado = document.getElementById('modalResultado');
 const inputNome = document.getElementById('nome');
 const inputPeso = document.getElementById('peso');
 const inputAltura = document.getElementById('altura');
 const botaoCalcular = document.getElementById('calcular');
 const botaoFechar = document.getElementById('fechar');
 const buttonStart = document.getElementById('button');
+const nomeResultado = document.getElementById('nomeResultado');
+const imcNumero = document.getElementById('imcNumero');
+const imcCategoria = document.getElementById('imcCategoria');
+const botaoNovoCalculo = document.getElementById('novoCalculo');
 
 // 2. FUNÇÃO PARA MOSTRAR O MODAL
 function abrirModal() {
@@ -58,9 +63,29 @@ function calcularIMC() {
     else if (imc < 40) categoria = 'Obesidade grau 2';
     else categoria = 'Obesidade grau 3';
 
-    // MOSTRAR RESULTADO
-    alert(`${nome}, seu IMC é ${imc.toFixed(2)} - ${categoria}`);
+    // MOSTRAR RESULTADO NO MODAL
+    nomeResultado.textContent = nome;
+    imcNumero.textContent = imc.toFixed(2);
+    imcCategoria.textContent = categoria;
+    
+    // Mudar cor do resultado conforme a categoria
+    const resultadoBox = document.querySelector('.resultado-box');
+    if (imc < 18.5) {
+        resultadoBox.style.background = 'rgba(100, 150, 255, 0.2)';
+        imcNumero.style.textShadow = '0 0 20px rgba(100, 150, 255, 0.9)';
+    } else if (imc < 25) {
+        resultadoBox.style.background = 'rgba(75, 255, 100, 0.2)';
+        imcNumero.style.textShadow = '0 0 20px rgba(75, 255, 100, 0.9)';
+    } else if (imc < 30) {
+        resultadoBox.style.background = 'rgba(255, 200, 75, 0.2)';
+        imcNumero.style.textShadow = '0 0 20px rgba(255, 200, 75, 0.9)';
+    } else {
+        resultadoBox.style.background = 'rgba(255, 75, 100, 0.2)';
+        imcNumero.style.textShadow = '0 0 20px rgba(255, 75, 100, 0.9)';
+    }
+    
     fecharModal();
+    modalResultado.classList.remove('hidden');
 }
 
 // 6. CONECTAR OS EVENTOS
@@ -73,4 +98,16 @@ modal.addEventListener('click', function(evento) {
     if (evento.target === modal) {
         fecharModal();
     }
+});
+
+// Fechar modal de resultado
+modalResultado.addEventListener('click', function(evento) {
+    if (evento.target === modalResultado) {
+        modalResultado.classList.add('hidden');
+    }
+});
+
+botaoNovoCalculo.addEventListener('click', function() {
+    modalResultado.classList.add('hidden');
+    abrirModal();
 });
