@@ -28,6 +28,18 @@
         <ul>2. Perguntaremos sua altura em cm</ul>
         <ul>3. Iremos dizer se você está com um peso ideal ou não</ul>
         </div>
-    <script src="script.js"></script>
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Calcular IMC</h2>
+
+            <input type="text" id="nome" placeholder="Seu nome">
+            <input type="number" id="peso" placeholder="Peso (kg)">
+            <input type="number" id="altura" placeholder="Altura (cm)">
+
+            <button id="calcular">Calcular</button>
+             <button id="fechar">Cancelar</button>
+        </div>
+    </div>
+        <script src="script.js"></script>
 </body>
 </html>

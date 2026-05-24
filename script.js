@@ -1,54 +1,76 @@
-const button = document.getElementById('button');
+// 1. PEGAR OS ELEMENTOS (conectar JS com HTML)
+const modal = document.getElementById('modal');
+const inputNome = document.getElementById('nome');
+const inputPeso = document.getElementById('peso');
+const inputAltura = document.getElementById('altura');
+const botaoCalcular = document.getElementById('calcular');
+const botaoFechar = document.getElementById('fechar');
+const buttonStart = document.getElementById('button');
 
-function handleButtonClick() {
-  do{
-    let nome = prompt("Qual é seu nome?")
-
-    if (nome === null) {
-        alert('Até logo!')
-        return
-    } else if (nome === "") {
-        alert("Por favor, digite seu nome!")
-        continue
-    } else {
-        alert(`Olá ${nome}, agora vamos calcular seu IMC...`)
-    }
-    
-    let peso = prompt("Qual é seu peso em kg?")
-    if (peso === null) {
-        alert('Até logo!')
-        return
-    } else if (isNaN(peso) || peso === "") {
-        alert("Por favor, digite um peso válido!")
-        continue
-    }
-    
-    let altura = prompt("Qual é sua altura em cm?")
-    if (altura === null) {
-        alert('Até logo!')
-        return
-    } else if (isNaN(altura) || altura === "") {
-        alert("Por favor, digite uma altura válida!")
-        continue
-    }
-    
-    altura = altura / 100
-    let imc = peso / (altura * altura)
-    
-if (imc < 18.5) {
-    alert(`Seu imc equivale a ${imc.toFixed(2)}kg/m², abaixo do peso!`)
-}else if (imc >= 18.5 && imc <= 24.9) {
-    alert(`Seu imc equivale a ${imc.toFixed(2)}kg/m², peso saudável!`)
-}else if (imc >= 25.0 && imc <= 29.9) {
-    alert(`Seu imc equivale a ${imc.toFixed(2)}kg/m², sobrepeso!`)
-}else if (imc >= 30.0 && imc <= 34.9) {
-    alert(`Seu imc equivale a ${imc.toFixed(2)}kg/m², obesidade grau 1!`)
-}else if (imc >= 35.0 && imc <= 39.9) {
-    alert(`Seu imc equivale a ${imc.toFixed(2)}kg/m², obesidade grau 2!`)
-}else if (imc > 40.0) {
-    alert(`Seu imc equivale a ${imc.toFixed(2)}kg/m², obesidade grau 3!`)
-}
-  }while (confirm("Deseja tentar novamente?"))
+// 2. FUNÇÃO PARA MOSTRAR O MODAL
+function abrirModal() {
+    modal.classList.remove('hidden'); // Remove a classe 'hidden'
 }
 
-button.addEventListener('click', handleButtonClick)
+// 3. FUNÇÃO PARA FECHAR O MODAL
+function fecharModal() {
+    modal.classList.add('hidden'); // Adiciona a classe 'hidden'
+    limparInputs(); // Limpa os campos
+}
+
+// 4. FUNÇÃO PARA LIMPAR OS INPUTS
+function limparInputs() {
+    inputNome.value = '';
+    inputPeso.value = '';
+    inputAltura.value = '';
+}
+
+// 5. FUNÇÃO PARA VALIDAR E CALCULAR
+function calcularIMC() {
+    const nome = inputNome.value.trim(); // .trim() remove espaços vazios
+    const peso = parseFloat(inputPeso.value); // Converte para número
+    const altura = parseFloat(inputAltura.value);
+
+    // VALIDAÇÃO
+    if (nome === '') {
+        alert('Digite seu nome!');
+        return;
+    }
+    if (isNaN(peso) || peso <= 0) {
+        alert('Digite um peso válido!');
+        return;
+    }
+    if (isNaN(altura) || altura <= 0) {
+        alert('Digite uma altura válida!');
+        return;
+    }
+
+    // CÁLCULO
+    const alturaEmMetros = altura / 100;
+    const imc = peso / (alturaEmMetros * alturaEmMetros);
+
+    // RESULTADO
+    let categoria = '';
+    if (imc < 18.5) categoria = 'Abaixo do peso';
+    else if (imc < 25) categoria = 'Peso saudável';
+    else if (imc < 30) categoria = 'Sobrepeso';
+    else if (imc < 35) categoria = 'Obesidade grau 1';
+    else if (imc < 40) categoria = 'Obesidade grau 2';
+    else categoria = 'Obesidade grau 3';
+
+    // MOSTRAR RESULTADO
+    alert(`${nome}, seu IMC é ${imc.toFixed(2)} - ${categoria}`);
+    fecharModal();
+}
+
+// 6. CONECTAR OS EVENTOS
+buttonStart.addEventListener('click', abrirModal);
+botaoFechar.addEventListener('click', fecharModal);
+botaoCalcular.addEventListener('click', calcularIMC);
+
+// BÔNUS: Fechar modal clicando fora dele
+modal.addEventListener('click', function(evento) {
+    if (evento.target === modal) {
+        fecharModal();
+    }
+});

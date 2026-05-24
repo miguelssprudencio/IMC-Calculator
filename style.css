@@ -140,3 +140,261 @@ button:hover span:not(:nth-child(6)) {
   transform: translate(-50%, -50%) scale(10);
   transition: 1.5s ease;
 }
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;  
+  box-sizing: border-box;
+  background: rgba(110, 110, 110, 0.58);
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  cursor: pointer;
+  transition: all 0.5s;
+  user-select: none;
+  font-weight: bolder;
+  color: black;
+}
+
+.modal:hover {
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+
+.modal:active {
+  transform: scale(0.95) rotateZ(1.7deg);
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 450px;
+    min-height: 550px;
+    background: #e8e8e8;
+    border-radius: 50px;
+    box-shadow: rgba(223, 30, 159, 0.452) 0px -23px 25px 0px inset, rgba(223, 30, 159, 0.452) 0px -36px 30px 0px inset, rgba(223, 30, 159, 0.452) 0px -79px 40px 0px inset, rgba(223, 30, 159, 0.452) 0px 2px 1px, rgba(223, 30, 159, 0.452) 0px 4px 2px, rgba(223, 30, 159, 0.452) 0px 8px 4px, rgba(223, 30, 159, 0.452) 0px 16px 8px, rgba(223, 30, 159, 0.452) 0px 32px 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 20px;
+    box-sizing: border-box; 
+    animation: flutuacao 3.1s ease-in-out infinite;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.modal-content input:focus {
+    border-color: #df1f9f;  
+    outline: none;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#calcular {
+  margin-top: 50px;
+  width: 300px;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 24px;
+  font-size: 25px;
+  color: rgb(255, 85, 164);
+  border: 2px solid white;
+  border-radius: 34px;
+  background-color: white;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+}
+
+#calcular::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: rgb(255, 65, 182);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+#calcular:hover::before {
+  scale: 8.5;
+}
+
+#calcular:hover {
+  color: #ffffff;
+  scale: 1.1;
+  box-shadow: 0 0px 20px rgba(255, 85, 170, 0.4);
+}
+
+#calcular:active {
+  scale: 1;
+}
+
+#fechar {
+  width: 300px;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 24px;
+  font-size: 25px;
+  color: rgb(255, 85, 164);
+  border: 2px solid white;
+  border-radius: 34px;
+  background-color: white;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+}
+
+#fechar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: rgb(255, 65, 182);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+#fechar:hover::before {
+  scale: 8.5;
+}
+
+#fechar:hover {
+  color: #ffffff;
+  scale: 1.1;
+  box-shadow: 0 0px 20px rgba(255, 85, 170, 0.4);
+}
+
+#fechar:active {
+  scale: 1;
+}
+ 
+#nome {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.596);
+  box-shadow: 0 0 .4vw rgba(255, 85, 170, 0.4), 0 0 0 .15vw transparent;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  padding: 0.4vw;
+  max-width: 350px;
+  height: 60px;
+  transition: .4s;
+}
+
+#nome:hover {
+  box-shadow: 0 0 0 .15vw rgba(255, 85, 170, 0.4);
+}
+
+#nome:focus {
+  box-shadow: 0 0 0 .15vw rgb(255, 65, 182);
+}
+
+#peso {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.596);
+  box-shadow: 0 0 .4vw rgba(255, 85, 170, 0.4), 0 0 0 .15vw transparent;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  padding: 0.4vw;
+   max-width: 350px;
+  height: 60px;
+  transition: .4s;
+}
+
+#peso:hover {
+  box-shadow: 0 0 0 .15vw rgba(255, 85, 170, 0.4);
+}
+
+#peso:focus {
+  box-shadow: 0 0 0 .15vw rgb(255, 65, 182);
+}
+
+#altura {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.596);
+  box-shadow: 0 0 .4vw rgba(255, 85, 170, 0.4), 0 0 0 .15vw transparent;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  padding: 0.4vw;
+   max-width: 350px;
+  height: 60px;
+  transition: .4s;
+}
+
+#altura:hover {
+  box-shadow: 0 0 0 .15vw rgba(255, 85, 170, 0.4);
+}
+
+#altura:focus {
+  box-shadow: 0 0 0 .15vw rgb(255, 65, 182);
+}
+
+.modal-content h2 {
+    width: 280px;
+    height: 105px;
+    background: rgb(255, 61, 213);
+    border-radius: 50px;
+    box-shadow: rgba(223, 30, 159, 0.452) 0px -23px 25px 0px inset, rgba(223, 30, 159, 0.452) 0px -36px 30px 0px inset, rgba(223, 30, 159, 0.452) 0px -79px 40px 0px inset, rgba(223, 30, 159, 0.452) 0px 2px 1px, rgba(223, 30, 159, 0.452) 0px 4px 2px, rgba(223, 30, 159, 0.452) 0px 8px 4px, rgba(223, 30, 159, 0.452) 0px 16px 8px, rgba(223, 30, 159, 0.363) 0px 32px 16px;
+    animation: flutuacao 3.1s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.699);
+    text-shadow: 0 0 10px rgb(255, 198, 255);
+    font-family: 'Josefin Sans';
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 50px;
+}
